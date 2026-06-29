@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-class Colorss{
+class Colorss {
   static const Color scaffoldBg = Color(0xff252734);
   static const Color bgLight1 = Color(0xff333646);
   static const Color bgLight2 = Color(0xff424657);

@@ -39,7 +39,13 @@ class MainDesktop extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colorss.yellowSecondary,
                   ),
-                  child: Text("Get in touch",style: TextStyle(color: Colorss.whitePrimary,fontWeight: FontWeight.w500),),
+                  child: Text(
+                    "Get in touch",
+                    style: TextStyle(
+                      color: Colorss.whitePrimary,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
                 ),
               ),
             ],

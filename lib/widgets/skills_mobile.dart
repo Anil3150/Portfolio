@@ -53,9 +53,10 @@ class SkillsMobile extends StatelessWidget {
                     color: Colorss.whiteSecondary,
                     fontSize: 16,
                   ),
-                  avatar: Image.asset(skillItems[i]['img'],
-                    width: 24, 
-                    height: 24, 
+                  avatar: Image.asset(
+                    skillItems[i]['img'],
+                    width: 24,
+                    height: 24,
                     fit: BoxFit.cover,
                   ),
                 ),

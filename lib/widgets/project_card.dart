@@ -75,10 +75,7 @@ import '../constants/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProjectCardWidget extends StatelessWidget {
-  const ProjectCardWidget({
-    super.key,
-    required this.project,
-  });
+  const ProjectCardWidget({super.key, required this.project});
 
   final ProjectUtils project;
 
@@ -138,7 +135,10 @@ class ProjectCardWidget extends StatelessWidget {
               children: [
                 Text(
                   'Available on:',
-                  style: TextStyle(fontSize: 10, color: Colorss.yellowSecondary),
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colorss.yellowSecondary,
+                  ),
                 ),
                 const Spacer(),
                 if (project.androidLink != null)

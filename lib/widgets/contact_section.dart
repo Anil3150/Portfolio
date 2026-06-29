@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,63 +11,72 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(25, 20, 25, 60),
+      padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
       color: Colorss.bgLight1,
       child: Column(
         children: [
-          Text(
-            'Get In Touch',
+          const Text(
+            "Get In Touch",
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colorss.whitePrimary,
             ),
           ),
-          SizedBox(height: 20),
-          Text(
-            'I am always open to discussing new projects, creative ideas or opportunities to be part of your vision.',
-            style: TextStyle(fontSize: 16, color: Colorss.whiteSecondary),
+
+          const SizedBox(height: 20),
+
+          const Text(
+            "I am always open to discussing new projects, creative ideas or opportunities to be part of your vision.",
             textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colorss.whiteSecondary,
+            ),
           ),
-          SizedBox(height: 20),
+
+          const SizedBox(height: 30),
+
           Wrap(
-            runSpacing: 25,
             spacing: 25,
-            children: [
-              for (int i = 0; i < contactTitles.length; i++)
-                InkWell(
-                  onTap: () async {
-                    launchContact(contactTitles[i], contactActions[i]);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colorss.bgLight2,
-                    ),
-                    child: Column(
-                      children: [
-                        Icon(
-                          contactIcons[i],
-                          color: Colorss.whitePrimary,
-                          size: 20,
+            runSpacing: 25,
+            alignment: WrapAlignment.center,
+            children: List.generate(contactTitles.length, (index) {
+              return InkWell(
+                borderRadius: BorderRadius.circular(10),
+                onTap: () => launchContact(contactActions[index]),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colorss.bgLight2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        contactIcons[index],
+                        color: Colorss.whitePrimary,
+                        size: 22,
+                      ),
+
+                      const SizedBox(height: 8),
+
+                      Text(
+                        contactTitles[index],
+                        style: const TextStyle(
+                          color: Colorss.whiteSecondary,
+                          fontSize: 13,
                         ),
-                        SizedBox(height: 5),
-                        Text(
-                          contactTitles[i],
-                          style: TextStyle(
-                            color: Colorss.whiteSecondary,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-            ],
+              );
+            }),
           ),
         ],
       ),
@@ -74,54 +84,22 @@ class ContactSection extends StatelessWidget {
   }
 }
 
-Future<void> launchContact(String type, String value) async {
-  Uri uri;
-
-  switch (type.toLowerCase()) {
-    case 'phone':
-      uri = Uri.parse("tel:$value");
-      break;
-
-    case 'email':
-      uri = Uri.parse("mailto:$value");
-      break;
-
-    case 'linkedin':
-      uri = Uri.parse(value);
-      break;
-
-    default:
-      print("Unsupported contact type: $type");
-      return;
-  }
+Future<void> launchContact(String url) async {
+  final Uri uri = Uri.parse(url);
 
   try {
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.platformDefault);
+    if (kIsWeb) {
+      await launchUrl(
+        uri,
+        webOnlyWindowName: '_blank',
+      );
     } else {
-      // ✅ Fallback for email (open Gmail in browser)
-      if (type.toLowerCase() == 'email') {
-        final Uri webMail = Uri.parse(
-          "https://mail.google.com/mail/?view=cm&to=$value",
-        );
-        if (await canLaunchUrl(webMail)) {
-          await launchUrl(webMail, mode: LaunchMode.externalApplication);
-          return;
-        }
-      }
-
-      // ✅ Fallback for LinkedIn (open in browser)
-      if (type.toLowerCase() == 'linkedin') {
-        final Uri linkedInWeb = Uri.parse(value);
-        if (await canLaunchUrl(linkedInWeb)) {
-          await launchUrl(linkedInWeb, mode: LaunchMode.externalApplication);
-          return;
-        }
-      }
-
-      throw 'Could not launch $uri';
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
     }
   } catch (e) {
-    print("Error launching $type: $e");
+    debugPrint("Launch Error: $e");
   }
 }

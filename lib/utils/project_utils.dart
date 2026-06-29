@@ -27,12 +27,14 @@ List<ProjectUtils> projectUtilsList = [
     image: 'assets/projects/proj.png',
     title: 'Secure Your Land',
     subtitle: 'One App for All Your Property Needs',
-    androidLink: 'https://drive.google.com/file/d/1AfcEDMpEYulFGO5KWCiCn4ShWDzJfKrW/view?usp=sharing',
+    androidLink:
+        'https://drive.google.com/file/d/1AfcEDMpEYulFGO5KWCiCn4ShWDzJfKrW/view?usp=sharing',
   ),
   ProjectUtils(
     image: 'assets/projects/proj.png',
     title: 'Agri Insights',
     subtitle: 'Empowering Farmers, Connecting Markets',
-    androidLink: 'https://drive.google.com/file/d/1fJnBASPCH9PAM-cNpdeg2DGw_ur1oGdy/view?usp=sharing',
+    androidLink:
+        'https://drive.google.com/file/d/1fJnBASPCH9PAM-cNpdeg2DGw_ur1oGdy/view?usp=sharing',
   ),
 ];

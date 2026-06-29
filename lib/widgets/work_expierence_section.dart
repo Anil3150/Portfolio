@@ -69,7 +69,10 @@ class WorkExperienceSection extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.blueAccent.withOpacity(0.3), Colors.purpleAccent.withOpacity(0.3)],
+          colors: [
+            Colors.blueAccent.withOpacity(0.3),
+            Colors.purpleAccent.withOpacity(0.3),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -114,10 +117,7 @@ class WorkExperienceSection extends StatelessWidget {
               Expanded(
                 child: Text(
                   company,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                  ),
+                  style: const TextStyle(fontSize: 16, color: Colors.white70),
                 ),
               ),
             ],
@@ -129,10 +129,7 @@ class WorkExperienceSection extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 duration,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.white54,
-                ),
+                style: const TextStyle(fontSize: 14, color: Colors.white54),
               ),
             ],
           ),
