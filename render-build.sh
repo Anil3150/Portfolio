@@ -2,16 +2,20 @@
 
 set -e
 
-echo "Installing Flutter Stable..."
+echo "Installing Flutter 3.29.2..."
 
-git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+git clone https://github.com/flutter/flutter.git --branch 3.29.2 --depth 1
 
 export PATH="$PATH:$(pwd)/flutter/bin"
 
-flutter doctor
+flutter --version
 
 flutter config --enable-web
 
-flutter pub get
+echo "Installing dependencies from pubspec.lock..."
+
+flutter pub get --enforce-lockfile
+
+echo "Building..."
 
 flutter build web --release
