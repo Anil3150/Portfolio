@@ -4,7 +4,10 @@ class ResumeData {
   static const String email = "malipeddianilkumar3150@gmail.com";
   static const String phone = "+91 9059141362";
   static const String location = "Nagarkurnool, Telangana, India";
-  static const String linkedIn = "https://www.linkedin.com/in/anil-kumar-malipeddi-149034266";
+  static const String linkedIn = "https://www.linkedin.com/in/anil-kumar-malipeddi-149034266/";
+  static const String linkedInDisplay = "linkedin.com/in/anil-kumar-malipeddi";
+  static const String portfolioUrl = "portfolio-2iay.onrender.com";
+  static const String githubUrl = "https://github.com/Anil3150";
   
   static const String summary = 
       "Results-driven Flutter Developer with 2+ years of experience designing, developing, and deploying scalable cross-platform mobile applications for Android and iOS. Skilled in Dart, the Flutter SDK, Clean Architecture, MVVM, and the Repository Pattern, with strong command of state management (GetX, BLoC). Experienced in REST API integration using Dio, secure authentication (JWT, OAuth, Google Sign-In), payment gateway integration, Firebase services, and end-to-end app deployment to the Google Play Store and Apple App Store. Adept at performance optimization, debugging, and problem-solving within Agile/Scrum teams, with proven ownership of the full mobile delivery lifecycle and Git-based collaboration.";
@@ -156,7 +159,7 @@ class ResumeData {
   ];
 
   static const String declaration = 
-      "I hereby declare that the information provided above is true and accurate to the best of my knowledge and belief. All details mentioned herein are genuine and I take full responsibility";
+      "I hereby declare that the information provided above is true and accurate to the best of my knowledge and belief. All details mentioned herein are genuine and I take full responsibility for their authenticity.";
 
   static const List<Map<String, dynamic>> services = [
     {
